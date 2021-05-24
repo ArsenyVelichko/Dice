@@ -35,14 +35,15 @@ void GLWidget::initializeGL() {
 						  boxTexture.mirrored());
 	m_itemList.append(box);
 
-	glEnable(GL_DEPTH_TEST);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
 }
 
 void GLWidget::resizeGL(int width, int height) {
 	float vfov = 45.0f;
 	float aspectRatio = width / float(height ? height : 1);
 	float nearPlane = 0.1f;
-	float farPlane = 100.0f;
+	float farPlane = 20.0f;
 
 	m_projection.setToIdentity();
 	m_projection.perspective(vfov, aspectRatio, nearPlane, farPlane);
